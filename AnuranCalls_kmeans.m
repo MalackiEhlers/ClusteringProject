@@ -13,7 +13,10 @@ data = mapminmax(data', 0, 1)';
 
 %% K-means
 for k = 2:K
+    tic;
     [idx,C] = kmeans(data, k);
+    runtime(k) = toc;
+
     fourScores(k,:) = computeFourClusteringMetrics(idx,labels);
 end
 
